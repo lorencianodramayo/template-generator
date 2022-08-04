@@ -8,7 +8,7 @@ const path = require("path");
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 8080; // Step 1
+const PORT = process.env.PORT || 8081; // Step 1
 
 const routes = require("./routes/api");
 
