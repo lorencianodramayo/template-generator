@@ -3,7 +3,9 @@ const path = require('path');
 const fs = require('fs');
 var writeCode = (uuid, customjsvalue, htmltagvalue,defaultvaluesvalue,csscodevalue,elementcroppingsizevalue,possiblevaluesvalue,res, creativesize)=>{
 	//console.log(customjsvalue)
-	// Use fs.readFile() method to read the file
+
+
+	//Injecting to index.html
 	fs.readFile(`generated/${uuid}/index.html`, 'utf8', function(err, data){
 		// Display the file content
 			//console.log(data);
@@ -47,6 +49,7 @@ var writeCode = (uuid, customjsvalue, htmltagvalue,defaultvaluesvalue,csscodeval
 
 		});
 
+		//Adding CSS CODE to adStyle.css
 		fs.readFile(`generated/${uuid}/adStyle.css`, 'utf8', function(err, data){
 			fs.writeFile(`generated/${uuid}/adStyle.css`, csscodevalue, {encoding: "utf8"}, (err) => {
 				if (err)
