@@ -1,22 +1,24 @@
 
 let htmltagvalue = '';
 
-const htmlTags = (headlines, req,uuid,res, creativesize) => {
+const htmlTags = (req,uuid,res) => {
 	let injectheadlines = "";
-	//PREPARING HTML TAGS
+	let { headlines } = req.body;
+
 	console.log("*****PREPARING HTML TAGS*****")
+
 	headlines.forEach((element, index) => {
-		//console.log(element.headlinearr.name)
-		if(element.headlinearr.hasShrinkToFit == true){
-			injectheadlines +=
-			`\t\t\t<div id="${element.headlinearr.name}-wrapper" textResize=true maxFontSize="${element.headlinearr.maxFontSize}">\n\t\t\t\t<p id="${element.headlinearr.name}" adlib-text="${element.headlinearr.name}"></p>\n\t\t\t</div>\n`
+		let { hasShrinkToFit, name, maxFontSize } = element.headlinearr;
+
+		if(hasShrinkToFit == true){
+			injectheadlines += `\t\t\t<div id="${name}-wrapper" textResize=true maxFontSize="${maxFontSize}">\n\t\t\t\t<p id="${name}" adlib-text="${name}"></p>\n\t\t\t</div>\n`
 		}
-		if(element.headlinearr.hasShrinkToFit == false){
-			injectheadlines +=
-			`\t\t\t<div id="${element.headlinearr.name}-wrapper">\n\t\t\t\t<p id="${element.headlinearr.name}" adlib-text="${element.headlinearr.name}" ></p>\n\t\t\t</div> \n`
+		if(hasShrinkToFit == false){
+			injectheadlines += `\t\t\t<div id="${name}-wrapper">\n\t\t\t\t<p id="${name}" adlib-text="${name}" ></p>\n\t\t\t</div> \n`
 		}
 	});
-	//console.log(injectheadlines)
+
 	htmltagvalue = injectheadlines;
+	//console.log(htmltagvalue)
 	//defaultValues(req.body.headlines, req.body.singleelements, req.body.landingpage,req,uuid,res, creativesize);
 }

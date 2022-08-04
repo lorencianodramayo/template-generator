@@ -2,63 +2,58 @@ const {upperCase} = require('upper-case');
 
 let defaultvaluesvalue = '';
 
-const defaultValues = (req,res,uuid,headlines, singleelement, landingpage,creativesize) => {
+const defaultValues = (req,res,uuid) => {
 	let str = '\t\t\tcssAttrib:"/*CSS HERE*/",\n';
 	let str2 = '';
 	let str3 = '';
 	let dynamicelement;
-	//PREPARING DEFAULT VALUES
+	let {headlines, singleelement, landingpage} = req.body;
+
 	console.log("*****PREPARING DEFAULT VALUES*****")
 
 	headlines.forEach((element, index) => {
-		//console.log(element.headlinearr.name)
-		let Value;
-		if(element.headlinearr.uppercase == true){
-			 Value = upperCase(element.headlinearr.value)
-			//console.log(Value)
+		let newvalue;
+		let { name, value, uppercase } = element.headlinearr;
+		//converting to uppercase
+		if(uppercase == true){
+			 newvalue = upperCase(value)
 		}else{
-			Value = element.headlinearr.value;
+			newvalue = value;
 		}
-
-
+		//adding space if the value is empty
 		if(element.headlinearr.value == ""){
-		//adding space inside qoute
-		str += `\t\t\t${element.headlinearr.name}:\"${Value} \", \n`
+			str += `\t\t\t${name}:\" \", \n`
 		}else{
-		str += `\t\t\t${element.headlinearr.name}:\"${Value}\", \n`
+			str += `\t\t\t${name}:\"${newvalue}\", \n`
 		}
 	});
 
 	singleelement.forEach((element, index) => {
-		//console.log(element.headlinearr.name)
-		if(element.headlinearr.value == ""){
-		//adding space inside qoute
-		str += `\t\t\t${element.headlinearr.name}:\"${element.headlinearr.value} \", //${element.headlinearr.comment} \n`
+		let { name, value, 	comment } = element.headlinearr;
+		//adding space if the value is empty
+		if(value == ""){
+			str += `\t\t\t${name}:\" \", //${comment} \n`
 		}else{
-		str += `\t\t\t${element.headlinearr.name}:\"${element.headlinearr.value}\", //${element.headlinearr.comment} \n`
+			str += `\t\t\t${name}:\"${value}\", //${comment} \n`
 		}
-
 	});
 
 	landingpage.forEach((element, index) => {
-		//console.log(element.headlinearr.name)
-		if(element.headlinearr.value == ""){
-		//adding space inside qoute
-		str += `\tcssAttrib:"/* CSS Here */",\n\tlandingPage:"${element.headlinearr.value }"\n`
+		let {value} = element.headlinearr;
+		//adding space if the value is empty
+		if(value == ""){
+			str += `\tlandingPage:" "\n`
 		}else{
-		str += `\tcssAttrib:"/* CSS Here */",\n\tlandingPage:"${element.headlinearr.value}"\n`
+			str += `\tlandingPage:"${value}"\n`
 		}
-
 	});
-	//var str = '';
-
 	//	console.log(str)
 	str2 = `var defaultValues = {\n${str}\t\t\t}`
 	str3 = JSON.stringify(str2);
 	dynamicelement = JSON.parse(str3)
 	//console.log(dynamicelement)
 	defaultvaluesvalue = dynamicelement;
-	elementCroppingSize(req.body.images,req,uuid,res, creativesize)
+	//elementCroppingSize(req.body.images,req,uuid,res, creativesize)
 }
 
 

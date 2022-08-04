@@ -4,7 +4,9 @@ const path = require('path');
 const fs = require('fs');
 //joining path of directory
 var formatArr = []
-const readDirectory = (foldername, readFolders) =>{
+
+//readDirectory("templates")
+const readDirectory = (foldername) =>{
 		const directoryPath = path.join(__dirname, `${foldername}`);
 		//passsing directoryPath and callback function
 		fs.readdir(directoryPath, function (err, files) {
@@ -18,11 +20,8 @@ const readDirectory = (foldername, readFolders) =>{
 				//console.log(file);
 				//console.log(format)
 				formatArr.push(file);
-
 			});
-
-			readFolders(formatArr);
-
+			console.log(formatArr)
 		});
 }
 

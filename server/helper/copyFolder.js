@@ -1,7 +1,4 @@
 
-
-// const path = require('path');
-// const fs = require('fs');
 // include fs-extra package
 let fs = require("fs-extra");
 

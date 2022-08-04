@@ -1,35 +1,31 @@
 let elementcroppingsizevalue = '';
 
-const elementCroppingSize = (req,res,uuid,images) =>{
-	let str4 = '';
-	let str5 = '';
-	let widthValue = '';
-
+const elementCroppingSize = (req,res,uuid) =>{
+	let str = '';
+	let str2 = '';
 	let elementSize = '';
-	let h = '';
-	let w = '';
-	//PREPARING ELEMENT CROPPING
+	let { images } = req.body;
+
 	images.forEach((element, index) => {
-		//console.log(element.headlinearr.name)
+		let { wrapperCSS, name } = element.headlinearr;
+		// search start
+		let widthValue = wrapperCSS.search("width:");
+		let heightValue = wrapperCSS.search("height:");
+		// search end
+		let w = wrapperCSS.indexOf("px;", widthValue)
+		let h = wrapperCSS.indexOf("px;", heightValue)
 
-		widthValue = element.headlinearr.wrapperCSS.search("width:");
-		heightValue = element.headlinearr.wrapperCSS.search("height:");
+		let wi = wrapperCSS.substring(widthValue + 6, w);
+		let he = wrapperCSS.substring(heightValue + 7, h);
 
-		w = element.headlinearr.wrapperCSS.indexOf("px;", widthValue)
-		h = element.headlinearr.wrapperCSS.indexOf("px;", heightValue)
-
-		let wi = element.headlinearr.wrapperCSS.substring(widthValue + 6, w);
-		let he = element.headlinearr.wrapperCSS.substring(heightValue + 7, h);
-
-
-		elementSize += `${element.headlinearr.name}:[${wi},${he}] \n`
+		elementSize += `${name}:[${wi},${he}] \n`
 	});
 
-	str4 = `var ElementImageSize = {\n${elementSize}\n\t\t}`
-	str5 = JSON.stringify(str4);
-	elemsize1 = JSON.parse(str5);
-	//console.log(elemsize1)
+	str = `var imageElementSizes = {\n${elementSize}\n\t\t}`
+	str2 = JSON.stringify(str);
+	elemsize1 = JSON.parse(str2);
 	elementcroppingsizevalue = elemsize1;
+	//console.log(elementcroppingsizevalue)
 	//cssCode(req.body.headlines,req,uuid,res, creativesize)
 }
 
