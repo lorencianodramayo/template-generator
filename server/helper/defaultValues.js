@@ -4,8 +4,7 @@ let DefaultValuesValue = '';
 
 const defaultValues = (req,res,uuid) => {
 	let str = '\t\t\tcssAttrib:"/*CSS HERE*/",\n';
-	let str2 = '';
-	let str3 = '';
+	let str2, str3 = '';
 	let DynamicElement;
 	let { Headlines, SingleElement, LandingPage } = req.body;
 

@@ -2,9 +2,7 @@
 let CssCodeValue = '';
 
 const cssCode = (req,res,uuid) => {
-	let CssCodeValue = '';
-	let ChildCSSVal = '';
-	let WrapperCssVal = '';
+	let CssCodeValue, ChildCSSVal, WrapperCssVal = '';
 	let { Headlines } = req.body;
 
 	console.log("*****PREPARING CSS*****")

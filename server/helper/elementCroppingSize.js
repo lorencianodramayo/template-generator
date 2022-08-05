@@ -1,9 +1,7 @@
 let ElementCroppingSizeValue = '';
 
 const elementCroppingSize = (req,res,uuid) =>{
-	let str = '';
-	let str2 = '';
-	let ElementSize = '';
+	let str, str2, ElementSize = '';
 	let { Images } = req.body;
 
 	Images.forEach((element, index) => {
