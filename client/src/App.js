@@ -11,6 +11,7 @@ import Navigation from './components/Navigation';
 import InitialSetup from './pages/InitialSetup';
 import DynamicElements from './pages/DynamicElements';
 import ImageSettings from './pages/ImageSettings';
+import SetFonts from './pages/SetFonts';
 
 // css
 import './App.less';
@@ -58,7 +59,9 @@ const App = () => {
               height: 'calc(100vh - 3em)'
             }}
           >
-            {step === 0 ? <InitialSetup /> : step === 1 ? <DynamicElements /> : <ImageSettings />}
+            <Card style={{ height: '-webkit-fill-available', borderRadius: '1em' }}>
+              {step === 0 ? <InitialSetup /> : step === 1 ? <DynamicElements /> : step === 2 ? <SetFonts /> : <ImageSettings />}
+            </Card>
           </div>
         </Content>
       </Layout>

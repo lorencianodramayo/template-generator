@@ -12,10 +12,13 @@ module.exports = {
         lessLoaderOptions: {
           lessOptions: {
             modifyVars: { 
-              '@primary-color': '#25165B', 
-              '@secondary-color': '#F22076', 
+              '@primary-color': '#5025c4', 
+              '@secondary-color': '#25165B',
+              '@success-color': '#F22076', 
               '@info-color': '#5025c4',
-              '@font-family': 'Karla, san-serif'
+              '@font-family': 'Karla, san-serif',
+              '@switch-color': '@success-color',
+              '@radio-button-color': '@success-color'
             },
             javascriptEnabled: true,
           },

@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 
-import { Button, Divider, Space, Form, Input, Select, Radio, Card, Switch, Typography, Row, Col } from 'antd';
-import { PlusOutlined, CheckOutlined, CloseOutlined, LayoutOutlined, LaptopOutlined, FacebookOutlined, GoogleOutlined, OneToOneOutlined } from '@ant-design/icons';
+import { Button, Divider, Space, Form, Input, Select, Radio, Switch, Typography, Row, Col } from 'antd';
+import { PlusOutlined, CheckOutlined, CloseOutlined, LayoutOutlined, LaptopOutlined, SettingOutlined, FacebookOutlined, GoogleOutlined, OneToOneOutlined } from '@ant-design/icons';
 
 const { Title } = Typography;
 
@@ -30,8 +30,11 @@ const InitialSetup = () => {
     };
 
     return (
-        <Card style={{ height: '-webkit-fill-available', borderRadius: '1em' }}>
-            <Title style={{fontWeight: 800}}>Initial Setup</Title>
+        <>
+            <Space align="center">
+                <SettingOutlined style={{ fontSize: '2em' }} />
+                <Title style={{ fontWeight: 800, margin: 0 }}>Initial Setup</Title>
+            </Space>
             <Divider />
             <Form
                 form={form}
@@ -63,13 +66,13 @@ const InitialSetup = () => {
                                             }}
                                         >
                                             <Input
-                                                placeholder="Please enter item"
+                                                placeholder="e.g. 300x250"
                                                 ref={inputRef}
                                                 value={name}
                                                 onChange={onNameChange}
                                             />
                                             <Button type="text" icon={<PlusOutlined />} onClick={addItem}>
-                                                Add item
+                                                Create
                                             </Button>
                                         </Space>
                                     </>
@@ -176,11 +179,15 @@ const InitialSetup = () => {
                 </Form.Item>
 
                 <Divider />
-                <Form.Item>
-                    <Button type="primary">Dynamic Elements</Button>
-                </Form.Item>
+                <Row>
+                    <Col span={24} style={{display: 'flex', justifyContent: 'flex-end'}}>
+                        <Form.Item>
+                            <Button type="primary">Dynamic Elements</Button>
+                        </Form.Item>
+                    </Col>
+                </Row>
             </Form>
-        </Card>
+        </>
     );
 };
 
