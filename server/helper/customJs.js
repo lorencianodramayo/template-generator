@@ -1,7 +1,7 @@
 
 const fs = require('fs');
 
-var CustomJsValue = '';
+let CustomJsValue = '';
 
 const customJS = (req,uuid,res) => {
 	let CustomJsVal = '';

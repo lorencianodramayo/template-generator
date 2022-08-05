@@ -1,6 +1,6 @@
 
 // include fs-extra package
-let fs = require("fs-extra");
+const fs = require("fs-extra");
 
 const copyFolder = (req,res,uuid)=>{
 

@@ -6,7 +6,9 @@ const cssCode = (req,res,uuid) => {
 	let ChildCSSVal = '';
 	let WrapperCssVal = '';
 	let { Headlines } = req.body;
+
 	console.log("*****PREPARING CSS*****")
+
 	Headlines.forEach((element, index) => {
 		let { ChildCSS, wrapperCSS, Name } = element.headlinearr;
 		WrapperCssVal = wrapperCSS.replace(/\s/g, '');
