@@ -14,7 +14,8 @@ module.exports = {
             modifyVars: { 
               '@primary-color': '#25165B', 
               '@secondary-color': '#F22076', 
-              '@info-color': '#5025c4'
+              '@info-color': '#5025c4',
+              '@font-family': 'Karla, san-serif'
             },
             javascriptEnabled: true,
           },

@@ -30,8 +30,8 @@ const InitialSetup = () => {
     };
 
     return (
-        <Card style={{ height: '-webkit-fill-available' }}>
-            <Title>Initial Setup</Title>
+        <Card style={{ height: '-webkit-fill-available', borderRadius: '1em' }}>
+            <Title style={{fontWeight: 800}}>Initial Setup</Title>
             <Divider />
             <Form
                 form={form}
@@ -85,7 +85,7 @@ const InitialSetup = () => {
 
                 <Form.Item label="Creative Type" required tooltip="This is a required field">
                     <Radio.Group style={{ display: 'flex' }}>
-                        <Radio.Button value="display" style={{ height: '150px', width: '150px', marginRight: '1em' }}>
+                        <Radio.Button value="display" style={{ height: '150px', width: '150px', marginRight: '1em', border: '1px solid #ececec', borderRadius: '1em' }}>
                             <Row style={{
                                 height: '-webkit-fill-available',
                                 width: '-webkit-fill-available',
@@ -99,7 +99,7 @@ const InitialSetup = () => {
                                 </Col>
                             </Row>
                         </Radio.Button>
-                        <Radio.Button value="inbanner" style={{ height: '150px', width: '150px', marginRight: '1em' }}>
+                        <Radio.Button value="inbanner" style={{ height: '150px', width: '150px', marginRight: '1em', border: '1px solid #ececec', borderRadius: '1em' }}>
                             <Row style={{
                                 height: '-webkit-fill-available',
                                 width: '-webkit-fill-available',
@@ -113,7 +113,7 @@ const InitialSetup = () => {
                                 </Col>
                             </Row>
                         </Radio.Button>
-                        <Radio.Button value="gads" style={{ height: '150px', width: '150px', marginRight: '1em' }}>
+                        <Radio.Button value="gads" style={{ height: '150px', width: '150px', marginRight: '1em', border: '1px solid #ececec', borderRadius: '1em' }}>
                             <Row style={{
                                 height: '-webkit-fill-available',
                                 width: '-webkit-fill-available',
@@ -127,7 +127,7 @@ const InitialSetup = () => {
                                 </Col>
                             </Row>
                         </Radio.Button>
-                        <Radio.Button value="vpaid" style={{ height: '150px', width: '150px', marginRight: '1em' }}><Row style={{
+                        <Radio.Button value="vpaid" style={{ height: '150px', width: '150px', marginRight: '1em', border: '1px solid #ececec', borderRadius: '1em' }}><Row style={{
                             height: '-webkit-fill-available',
                             width: '-webkit-fill-available',
                             flexDirection: 'column',
@@ -139,7 +139,7 @@ const InitialSetup = () => {
                                 VPaid
                             </Col>
                         </Row></Radio.Button>
-                        <Radio.Button value="social" style={{ height: '150px', width: '150px', marginRight: '1em' }}>
+                        <Radio.Button value="social" style={{ height: '150px', width: '150px', marginRight: '1em', border: '1px solid #ececec', borderRadius: '1em' }}>
                             <Row style={{
                                 height: '-webkit-fill-available',
                                 width: '-webkit-fill-available',

@@ -34,7 +34,7 @@ const App = () => {
         theme="light"
       >
         <Space direction="vertical" size="middle" style={{ display: 'flex', padding: "2em" }}>
-          <Card size="small">
+          <Card size="small" style={{height: 'calc(100vh - 4em)'}}>
             <Navigation setStep={setStep} currentStep={step} />
           </Card>
         </Space>
