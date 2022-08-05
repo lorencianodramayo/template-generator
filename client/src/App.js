@@ -1,86 +1,69 @@
-import React from 'react';
-import { Breadcrumb, Layout, Menu } from 'antd';
-import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
 
+import React, { useState } from 'react';
 
+// ant components
+import { Layout, Card, Space } from 'antd';
+
+// reusable components
+import Navigation from './components/Navigation';
+
+// pages
+import InitialSetup from './pages/InitialSetup';
+import DynamicElements from './pages/DynamicElements';
+import ImageSettings from './pages/ImageSettings';
+
+// css
 import './App.less';
 
-const { Header, Content, Footer, Sider } = Layout;
-const items1 = ['1', '2', '3'].map((key) => ({
-  key,
-  label: `nav ${key}`,
-}));
-const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, index) => {
-  const key = String(index + 1);
-  return {
-    key: `sub${key}`,
-    icon: React.createElement(icon),
-    label: `subnav ${key}`,
-    children: new Array(4).fill(null).map((_, j) => {
-      const subKey = index * 4 + j + 1;
-      return {
-        key: subKey,
-        label: `option${subKey}`,
-      };
-    }),
-  };
-});
+const { Content, Sider } = Layout;
 
-const App = () => (<Layout>
-    <Header className="header">
-      <div className="logo" />
-      <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} items={items1} />
-    </Header>
-    <Content
-      style={{
-        padding: '0 50px',
-        height: 'calc(100vh - 10em)'
-      }}
-    >
-      <Breadcrumb
+const App = () => {
+  const [step, setStep] = useState(0);
+  return (
+    <Layout hasSider>
+      <Sider
         style={{
-          margin: '16px 0',
+          overflow: 'auto',
+          height: '100vh',
+          position: 'fixed',
+          left: 0,
+          top: 0,
+          bottom: 0,
         }}
+        width={500}
+        theme="light"
       >
-        <Breadcrumb.Item>Home</Breadcrumb.Item>
-        <Breadcrumb.Item>List</Breadcrumb.Item>
-        <Breadcrumb.Item>App</Breadcrumb.Item>
-      </Breadcrumb>
+        <Space direction="vertical" size="middle" style={{ display: 'flex', padding: "2em" }}>
+          <Card size="small">
+            <Navigation setStep={setStep} currentStep={step} />
+          </Card>
+        </Space>
+      </Sider>
       <Layout
-        className="site-layout-background"
+        className="site-layout"
         style={{
-          padding: '24px 0',
+          marginLeft: 500,
+          height: '100vh'
         }}
       >
-        <Sider className="site-layout-background" width={200}>
-          <Menu
-            mode="inline"
-            defaultSelectedKeys={['1']}
-            defaultOpenKeys={['sub1']}
-            style={{
-              height: '100%',
-            }}
-            items={items2}
-          />
-        </Sider>
         <Content
           style={{
-            padding: '0 24px',
-            minHeight: 280,
+            margin: '24px',
+            overflow: 'initial',
           }}
         >
-          Content
+          <div
+            style={{
+              padding: 24,
+              height: 'calc(100vh - 3em)'
+            }}
+          >
+            {step === 0 ? <InitialSetup /> : step === 1 ? <DynamicElements /> : <ImageSettings />}
+          </div>
         </Content>
       </Layout>
-    </Content>
-    <Footer
-      style={{
-        textAlign: 'center',
-      }}
-    >
-      Ant Design ©2018 Created by Ant UED
-    </Footer>
-  </Layout>
-  );
+    </Layout>
+  )
+};
 
 export default App;
