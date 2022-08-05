@@ -12,26 +12,26 @@ const defaultValues = (req,res,uuid) => {
 	console.log("*****PREPARING DEFAULT VALUES*****")
 
 	Headlines.forEach((element, index) => {
-		let NewValue;
+		//let NewValue;
 		let { Name, Value, UpperCase } = element.headlinearr;
 		//converting to uppercase
 		if(UpperCase == true){
-			 NewValue = upperCase(Value)
+			Value = upperCase(Value)
 		}else{
-			NewValue = Value;
+			Value = Value;
 		}
 		//adding space if the value is empty
 		if(Value == ""){
 			str += `\t\t\t${Name}:\" \", \n`
 		}else{
-			str += `\t\t\t${Name}:\"${NewValue}\", \n`
+			str += `\t\t\t${Name}:\"${Value}\", \n`
 		}
 	});
 
 	SingleElement.forEach((element, index) => {
 		let { Name, Value, comment } = element.headlinearr;
 		//adding space if the value is empty
-		if(value == ""){
+		if(Value == ""){
 			str += `\t\t\t${Name}:\" \", //${comment} \n`
 		}else{
 			str += `\t\t\t${Name}:\"${Value}\", //${comment} \n`
@@ -41,7 +41,7 @@ const defaultValues = (req,res,uuid) => {
 	LandingPage.forEach((element, index) => {
 		let { Value } = element.headlinearr;
 		//adding space if the value is empty
-		if(value == ""){
+		if(Value == ""){
 			str += `\tlandingPage:" "\n`
 		}else{
 			str += `\tlandingPage:"${Value}"\n`
