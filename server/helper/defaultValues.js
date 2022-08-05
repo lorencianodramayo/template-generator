@@ -29,12 +29,12 @@ const defaultValues = (req,res,uuid) => {
 	});
 
 	SingleElement.forEach((element, index) => {
-		let { Name, Value, comment } = element.headlinearr;
+		let { Name, Value, Comment } = element.headlinearr;
 		//adding space if the value is empty
 		if(Value == ""){
-			str += `\t\t\t${Name}:\" \", //${comment} \n`
+			str += `\t\t\t${Name}:\" \", //${Comment} \n`
 		}else{
-			str += `\t\t\t${Name}:\"${Value}\", //${comment} \n`
+			str += `\t\t\t${Name}:\"${Value}\", //${Comment} \n`
 		}
 	});
 

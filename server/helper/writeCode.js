@@ -10,16 +10,16 @@ var writeCode = (uuid, CustomJsValue, HtmlTagValue,DefaultValuesValue,CssCodeVal
 			//var splitted = Data.split('');
 
 			var EncodedString = Buffer.from(`${Data}`, 'utf-8').toString();
-			var Matched =EncodedString.split("<!--customjs-->");
+			var Matched = EncodedString.split("<!--customjs-->");
 
 			Matched.splice(1, 0, CustomJsValue);
-			let Addedcustomjs = `${Matched[0]} ${Matched[1]} ${Matched[2]}`;
+			let AddedCustomJs = `${Matched[0]} ${Matched[1]} ${Matched[2]}`;
 
-			var Matched2 = Addedcustomjs.split("<!--htmltags-->");
+			var Matched2 = AddedCustomJs.split("<!--htmltags-->");
 			Matched2.splice(1, 0, HtmlTagValue);
-			let Addedhtmltags = `${Matched2[0]} ${Matched2[1]} ${Matched2[2]}`;
+			let AddedHtmlTags = `${Matched2[0]} ${Matched2[1]} ${Matched2[2]}`;
 
-			var Matched3 = Addedhtmltags.split("/*dynamicelement*/");
+			var Matched3 = AddedHtmlTags.split("/*dynamicelement*/");
 			Matched3.splice(1, 0, DefaultValuesValue);
 			let AddedDefaultValues = `${Matched3[0]} ${Matched3[1]} ${Matched3[2]}`;
 
