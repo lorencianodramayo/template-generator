@@ -13,9 +13,9 @@ const defaultValues = (req,res,uuid) => {
 
 	Headlines.forEach((element, index) => {
 		let NewValue;
-		let { Name, Value, uppercase } = element.headlinearr;
+		let { Name, Value, UpperCase } = element.headlinearr;
 		//converting to uppercase
-		if(uppercase == true){
+		if(UpperCase == true){
 			 NewValue = upperCase(Value)
 		}else{
 			NewValue = Value;
