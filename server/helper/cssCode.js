@@ -1,23 +1,23 @@
 
-let csscodevalue = '';
+let CssCodeValue = '';
 
 const cssCode = (req,res,uuid) => {
-	let cssCodeValue = '';
-	let childcssval = '';
-	let wrappercssval = '';
-	let { headlines } = req.body;
+	let CssCodeValue = '';
+	let ChildCSSVal = '';
+	let WrapperCssVal = '';
+	let { Headlines } = req.body;
 	console.log("*****PREPARING CSS*****")
-	headlines.forEach((element, index) => {
-		let { childCSS, wrapperCSS, name } = element.headlinearr;
-		wrappercssval = wrapperCSS.replace(/\s/g, '');
-		wrappercssval2 = wrappercssval.replace(/;/g, ";\n\t");
-		childcssval = childCSS.replace(/\s/g, '');
-		childcssval2 = childcssval.replace(/;/g, ";\n\t");
-		cssCodeValue += `#${name}-wrapper{\n\t${wrappercssval2}\n}\n#${name}{\n\t${childcssval2}\n} \n`
+	Headlines.forEach((element, index) => {
+		let { ChildCSS, wrapperCSS, Name } = element.headlinearr;
+		WrapperCssVal = wrapperCSS.replace(/\s/g, '');
+		WrapperCssVal2 = WrapperCssVal.replace(/;/g, ";\n\t");
+		ChildCSSVal = ChildCSS.replace(/\s/g, '');
+		ChildCSSVal2 = ChildCSSVal.replace(/;/g, ";\n\t");
+		CssCodeValue += `#${Name}-wrapper{\n\t${WrapperCssVal2}\n}\n#${Name}{\n\t${ChildCSSVal2}\n} \n`
 	});
 
-	csscodevalue = cssCodeValue;
-	//console.log(csscodevalue)
+	CssCodeValue = CssCodeValue;
+	//console.log(CssCodeValue)
 	//possibleValues(req,uuid,res, creativesize);
 }
 

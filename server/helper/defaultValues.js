@@ -1,58 +1,58 @@
 const {upperCase} = require('upper-case');
 
-let defaultvaluesvalue = '';
+let DefaultValuesValue = '';
 
 const defaultValues = (req,res,uuid) => {
 	let str = '\t\t\tcssAttrib:"/*CSS HERE*/",\n';
 	let str2 = '';
 	let str3 = '';
-	let dynamicelement;
-	let {headlines, singleelement, landingpage} = req.body;
+	let DynamicElement;
+	let { Headlines, SingleElement, LandingPage } = req.body;
 
 	console.log("*****PREPARING DEFAULT VALUES*****")
 
-	headlines.forEach((element, index) => {
-		let newvalue;
-		let { name, value, uppercase } = element.headlinearr;
+	Headlines.forEach((element, index) => {
+		let NewValue;
+		let { Name, Value, uppercase } = element.headlinearr;
 		//converting to uppercase
 		if(uppercase == true){
-			 newvalue = upperCase(value)
+			 NewValue = upperCase(Value)
 		}else{
-			newvalue = value;
+			NewValue = Value;
 		}
 		//adding space if the value is empty
-		if(element.headlinearr.value == ""){
-			str += `\t\t\t${name}:\" \", \n`
+		if(Value == ""){
+			str += `\t\t\t${Name}:\" \", \n`
 		}else{
-			str += `\t\t\t${name}:\"${newvalue}\", \n`
+			str += `\t\t\t${Name}:\"${NewValue}\", \n`
 		}
 	});
 
-	singleelement.forEach((element, index) => {
-		let { name, value, 	comment } = element.headlinearr;
+	SingleElement.forEach((element, index) => {
+		let { Name, Value, comment } = element.headlinearr;
 		//adding space if the value is empty
 		if(value == ""){
-			str += `\t\t\t${name}:\" \", //${comment} \n`
+			str += `\t\t\t${Name}:\" \", //${comment} \n`
 		}else{
-			str += `\t\t\t${name}:\"${value}\", //${comment} \n`
+			str += `\t\t\t${Name}:\"${Value}\", //${comment} \n`
 		}
 	});
 
-	landingpage.forEach((element, index) => {
-		let {value} = element.headlinearr;
+	LandingPage.forEach((element, index) => {
+		let { Value } = element.headlinearr;
 		//adding space if the value is empty
 		if(value == ""){
 			str += `\tlandingPage:" "\n`
 		}else{
-			str += `\tlandingPage:"${value}"\n`
+			str += `\tlandingPage:"${Value}"\n`
 		}
 	});
 	//	console.log(str)
 	str2 = `var defaultValues = {\n${str}\t\t\t}`
 	str3 = JSON.stringify(str2);
-	dynamicelement = JSON.parse(str3)
-	//console.log(dynamicelement)
-	defaultvaluesvalue = dynamicelement;
+	DynamicElement = JSON.parse(str3)
+	//console.log(DynamicElement)
+	DefaultValuesValue = DynamicElement;
 	//elementCroppingSize(req.body.images,req,uuid,res, creativesize)
 }
 

@@ -14,7 +14,7 @@ const CreativeSchema = new Schema({
   previewData: [
     {
       previewName: String,
-      defeaultValues: Object,
+      defaultValues: Object,
     },
   ],
   date: {
