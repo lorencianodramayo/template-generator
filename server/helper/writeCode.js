@@ -1,7 +1,7 @@
 //requiring path and fs modules
 const path = require('path');
 const fs = require('fs');
-var writeCode = (uuid, CustomJsValue, HtmlTagValue,DefaultValuesValue,CssCodeValue,ElementCroppingSizeValue,possiblevaluesvalue,res, creativesize)=>{
+var writeCode = (uuid, CustomJsValue, HtmlTagValue, DefaultValuesValue, CssCodeValue, ElementCroppingSizeValue, possiblevaluesvalue, res, CreativeSize)=>{
 
 	//Injecting to index.html
 	fs.readFile(`generated/${uuid}/index.html`, 'utf8', function(err, Data){
