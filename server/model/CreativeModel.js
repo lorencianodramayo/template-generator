@@ -33,3 +33,20 @@ const CreativeSchema = new Schema({
 });
 
 module.exports = mongoose.model("CreativeModel", CreativeSchema);
+
+
+/*healine: {
+    wrappercss:string,
+    childcss:string,
+    case:string,
+    shrinktofit: {
+        boolean: true,
+        value: number,
+    },
+}
+image: {
+    wrappercss:string,
+    childcss:string,
+    filedata: data,
+}
+*/
