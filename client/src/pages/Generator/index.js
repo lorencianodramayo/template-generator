@@ -174,13 +174,11 @@ const Generator = () => {
                             config.map((configuration, index) =>
                                 <Form.Item key={index} label={configuration.name} required tooltip="This is a required field">
                                     <Select
-                                        mode="multiple"
-                                        allowClear
+                                        mode="tags"
                                         style={{
                                             width: '100%',
                                         }}
-                                        placeholder="Please select"
-                                        defaultValue={['a10', 'c12']}
+                                        placeholder="Tags Mode"
                                         onChange={handleChange}
                                     >
                                         {children}
