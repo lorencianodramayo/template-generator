@@ -5,13 +5,10 @@ import React, { useState } from 'react';
 import { Layout, Card, Space } from 'antd';
 
 // reusable components
-import Navigation from './components/Navigation';
+import Controls from './pages/Controls';
 
 // pages
-import InitialSetup from './pages/InitialSetup';
-import DynamicElements from './pages/DynamicElements';
-import ImageSettings from './pages/ImageSettings';
-import SetFonts from './pages/SetFonts';
+import Generator from './pages/Generator';
 
 // css
 import './App.less';
@@ -22,49 +19,44 @@ const App = () => {
   const [step, setStep] = useState(0);
   return (
     <Layout hasSider>
+      <Layout
+        className="site-layout"
+        style={{
+          marginRight: 400,
+          height: '100vh'
+        }}
+      >
+        <Content>
+          <div
+            style={{
+              padding: 2,
+              height: '100vh'
+            }}
+          >
+            <Card style={{ height: '-webkit-fill-available', borderRadius: '0.5em' }}>
+              <Generator />
+            </Card>
+          </div>
+        </Content>
+      </Layout>
       <Sider
         style={{
           overflow: 'auto',
           height: '100vh',
           position: 'fixed',
-          left: 0,
+          right: 0,
           top: 0,
           bottom: 0,
         }}
-        width={500}
+        width={400}
         theme="light"
       >
-        <Space direction="vertical" size="middle" style={{ display: 'flex', padding: "2em" }}>
-          <Card size="small" style={{height: 'calc(100vh - 4em)'}}>
-            <Navigation setStep={setStep} currentStep={step} />
+        <Space direction="vertical" size="middle" style={{ display: 'flex', padding: "1em" }}>
+          <Card size="small" style={{height: 'calc(100vh - 2em)'}}>
+            <Controls setStep={setStep} currentStep={step} />
           </Card>
         </Space>
       </Sider>
-      <Layout
-        className="site-layout"
-        style={{
-          marginLeft: 500,
-          height: '100vh'
-        }}
-      >
-        <Content
-          style={{
-            margin: '24px',
-            overflow: 'initial',
-          }}
-        >
-          <div
-            style={{
-              padding: 24,
-              height: 'calc(100vh - 3em)'
-            }}
-          >
-            <Card style={{ height: '-webkit-fill-available', borderRadius: '1em' }}>
-              {step === 0 ? <InitialSetup /> : step === 1 ? <DynamicElements /> : step === 2 ? <SetFonts /> : <ImageSettings />}
-            </Card>
-          </div>
-        </Content>
-      </Layout>
     </Layout>
   )
 };
