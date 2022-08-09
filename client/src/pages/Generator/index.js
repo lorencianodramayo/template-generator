@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 
-import { Button, Divider, Space, Form, Input, Select, Radio, Switch, Row, Col, Segmented, Drawer } from 'antd';
-import { PlusOutlined, CheckOutlined, CloseOutlined, ExperimentOutlined } from '@ant-design/icons';
+import { Button, Divider, Space, Form, Input, Select, Radio, Switch, Row, Col, Segmented, Drawer, Tooltip } from 'antd';
+import { PlusOutlined, CheckOutlined, CloseOutlined, ExperimentOutlined, FontSizeOutlined, CloudUploadOutlined } from '@ant-design/icons';
 
 import { creativeType, templatePeripherals, defaultSize, config } from '../../constant/variables';
 
@@ -148,9 +148,23 @@ const Generator = () => {
             <>
                 <Row>
                     <Col span={24} style={{ display: 'flex', justifyContent: 'space-between' }}>
-                        <Button type="primary" onClick={showDrawer} icon={<ExperimentOutlined />}>
-                            Config
-                        </Button>
+                        <Row gutter={[8, 0]}>
+                            <Col>
+                                <Button type="primary" onClick={showDrawer} icon={<ExperimentOutlined />}>
+                                    Config
+                                </Button>
+                            </Col>
+                            <Col>
+                                <Tooltip title="Add Fonts" placement="bottom" >
+                                    <Button type="dashed" shape="circle" icon={<FontSizeOutlined />} />
+                                </Tooltip>
+                            </Col>
+                            <Col>
+                                <Tooltip title="Upload Images" placement="bottom" >
+                                    <Button type="dashed" shape="circle" icon={<CloudUploadOutlined />} />
+                                </Tooltip>
+                            </Col>
+                        </Row>
                         <Segmented size="large" defaultValue="Frame 1-STB" options={['Frame 1-STB', 'Frame 2-STB', 'Frame 3-STB']} />
                     </Col>
                 </Row>
